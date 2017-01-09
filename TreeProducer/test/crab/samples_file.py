@@ -3,7 +3,8 @@
 ########
 
 #        CRAB task name          DAS name           
-samples['DoubleEG_Run2016G-23Sep2016-v1']       = ['/DoubleEG/Run2016G-23Sep2016-v1/MINIAOD',    ['outputFile=treeECALAlignment.root']]
+#samples['DoubleEG_Run2016G-23Sep2016-v1']       = ['/DoubleEG/Run2016G-23Sep2016-v1/MINIAOD',    ['outputFile=test.root']]
+samples['DoubleEG_Run2016C-23Sep2016-v1']       = ['/DoubleEG/Run2016C-23Sep2016-v1/MINIAOD',    ['outputFile=test.root']]
 
 config.Data.useParent = True           # Important!
 
