@@ -28,4 +28,7 @@ config.Data.allowNonValidInputDataset = True
 #config.JobType.inputFiles = ['../EBAlign_2015.db','../EEAlign_2015.db']
 
 
+#hadd /tmp/amassiro/test.root  /tmp/amassiro/eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jan2017/DoubleEG/crab_DoubleEG_Run2016C-23Sep2016-v1/170109_172141/00*/failed/test_*.root
+
+
 

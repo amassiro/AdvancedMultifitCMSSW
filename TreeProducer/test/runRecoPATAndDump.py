@@ -6,7 +6,11 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('analysis')
 options.parseArguments()
 
-process = cms.Process('AdvancedMultifit')
+
+
+from Configuration.StandardSequences.Eras import eras
+
+process = cms.Process('AdvancedMultifit', eras.Run2_25ns)
 
 # import of standard configurations
 #process.load('Configuration.StandardSequences.Services_cff')
@@ -59,7 +63,10 @@ process.configurationMetadata = cms.untracked.PSet(
 #from Configuration.AlCa.GlobalTag import GlobalTag
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v12', '')
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v12'
+#process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v12'
+process.GlobalTag.globaltag = '80X_dataRun2_2016SeptRepro_v4'
+
+
 
 
 process.RECOSIMoutput = cms.OutputModule("PoolOutputModule",
@@ -251,6 +258,18 @@ process.schedule2 = cms.Schedule(process.raw2digi_step, process.reconstruction_s
     #process.schedule = cms.Schedule(process.multifit, process.weights, process.TreeProducer_step, process.endjob_step)
 #else:
     #process.schedule = cms.Schedule(process.TreeProducer_step, process.endjob_step)
+
+
+
+
+# customisation of the process.
+
+## Automatic addition of the customisation function from SLHCUpgradeSimulations.Configuration.postLS1Customs
+#from SLHCUpgradeSimulations.Configuration.postLS1Customs import customisePostLS1 
+
+##call to customisation function customisePostLS1 imported from SLHCUpgradeSimulations.Configuration.postLS1Customs
+#process = customisePostLS1(process)
+
 
 
 
