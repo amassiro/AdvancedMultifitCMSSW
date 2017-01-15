@@ -380,20 +380,27 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
   _mee_advanced_multifit = -999;
   for ( unsigned int i=0; i<electrons.size(); ++i ){
     reco::GsfElectron  electron = electrons.at(i);
-    if (found1 == false) {
-      L1 = electron.p4();
-      _pt1_advanced_multifit = L1.pt();
-      _eta1_advanced_multifit = L1.eta();
-      _phi1_advanced_multifit = L1.phi();
-      found1 = true;
-    }
-    else if (found2 == false) {
-      L2 = electron.p4();
-      found2 = true;
-      _pt2_advanced_multifit = L2.pt();
-      _eta2_advanced_multifit = L2.eta();
-      _phi2_advanced_multifit = L2.phi();
-      _mee_advanced_multifit = (L1+L2).mass();
+    if (
+      electron.p4().pt() > 10
+      && fabs(electron.deltaEtaSuperClusterTrackAtVtx()) < 2.5e-3
+      && fabs(electron.deltaPhiSuperClusterTrackAtVtx()) < 10e-3
+      && electron.dr03EcalRecHitSumEt() < 30
+    ) {
+      if (found1 == false) {
+        L1 = electron.p4();
+        _pt1_advanced_multifit = L1.pt();
+        _eta1_advanced_multifit = L1.eta();
+        _phi1_advanced_multifit = L1.phi();
+        found1 = true;
+      }
+      else if (found2 == false) {
+        L2 = electron.p4();
+        found2 = true;
+        _pt2_advanced_multifit = L2.pt();
+        _eta2_advanced_multifit = L2.eta();
+        _phi2_advanced_multifit = L2.phi();
+        _mee_advanced_multifit = (L1+L2).mass();
+      }
     }
   }
   

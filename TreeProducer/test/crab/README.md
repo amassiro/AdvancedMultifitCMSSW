@@ -13,5 +13,8 @@ Multicrab
     python multicrab.py   samples_file.py
     
     python multicrab.py crab_projects_7Jan2017_localReco     status
+    python multicrab.py crab_projects_7Jan2017_localReco     status    --verboseErrors
+    
 
 
+    
