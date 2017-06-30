@@ -224,18 +224,24 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
     float value_weight   = 0;
     
     for(int iBX=0; iBX<10; iBX++){
-      //----    -3 because the first 3 samples are 0 by construction
-      //----    +5 because the in-time pulse is at the 5th position
-      if ((i - iBX) >= 0  &&  (i - iBX) < 12) {
-        value_multifit += ampl_multifit[iBX] * pulse_shape[i - iBX];
-        gr_reco_pulse_components[iBX]  -> SetPoint(i - iBX, position[i]*25. + 25*iBX, ampl_multifit[iBX] * pulse_shape[i - iBX] + pedestal);
+      //----    +2 because the the maximum is on the 3rd sample, so everything is shifted by construction
+      if ((i - iBX +2) >= 0  &&  (i - iBX +2) < 12) {
+//         if (iBX ==5) value_multifit += ampl_multifit[iBX] * pulse_shape[i - iBX +2];
+        value_multifit += ampl_multifit[iBX] * pulse_shape[i - iBX +2];
         std::cout << " filling : " << iBX << std::endl;
       }
+
+      if ((i - iBX +2) >= 0  &&  (i - iBX +2) < 12) {
+        if (iBX<=2) gr_reco_pulse_components[iBX]  -> SetPoint(i,          position[i]*25., ampl_multifit[iBX] * pulse_shape[i - iBX +2] + pedestal);
+        else        gr_reco_pulse_components[iBX]  -> SetPoint(i - iBX +2, position[i]*25., ampl_multifit[iBX] * pulse_shape[i - iBX +2] + pedestal);
+      }
+      
     }
     
     if ((i-3) >= 0) {
       value_weight = amplitude_weight * pulse_shape[i-3];  
     }
+//     value_weight = amplitude_weight * pulse_shape[i];  
     
     gr_reco_pulse        -> SetPoint(i, position[i]*25., value_multifit + pedestal);
     gr_reco_weight_pulse -> SetPoint(i, position[i]*25., value_weight   + pedestalHomemade);
