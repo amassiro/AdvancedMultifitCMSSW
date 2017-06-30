@@ -7,5 +7,7 @@ plot:
 
     r00t plotPulse.cxx\(\"output.root\",1\)
 
+    r00t FilterTree.cxx\(\"output.root\",\"outputFilter.root\"\)
+    r00t plotPulse.cxx\(\"outputFilter.root\",1\)
 
 
