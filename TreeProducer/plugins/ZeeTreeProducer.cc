@@ -132,6 +132,9 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       UShort_t _lumi;
       UShort_t _bx;
       UInt_t _id;
+      UInt_t _cmsswindex;
+      int _isEB;
+      
       float _gainratios[2];
       float _eta;
       float _phi;
@@ -251,7 +254,9 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTree->Branch("phi",         &_phi,      "phi/F");
    outTree->Branch("pulse",       _pulse,     "pulse[10]/F");
    outTree->Branch("position",    _position,  "position[10]/F");
-  
+   outTree->Branch("cmsswindex",          &_cmsswindex,       "cmsswindex/i");
+   outTree->Branch("isEB",          &_isEB,       "isEB/I");
+   
    outTree->Branch("chi2",            &_chi2,           "chi2/F");
    outTree->Branch("jitter",          &_jitter,         "jitter/F");
    outTree->Branch("jitterError",     &_jitterError,    "jitterError/F");
@@ -437,8 +442,17 @@ void ZeeTreeProducer::FillDigi(EcalDataFrame digi, const EcalUncalibratedRecHitC
     _position[j] = j;
   }
   
-  
-  
+  //---- get cmsswIndex
+  if( digi.id().subdetId() == EcalBarrel) {
+    EBDetId id(digi.id());
+    _cmsswindex = id.rawId();
+    _isEB = 1;
+  } else {
+    EEDetId id(digi.id());
+    _cmsswindex = id.rawId();
+    _isEB = 0;
+    }
+    
   _handmade_pedestal = 0;
   for (uint j=0; j<n_pedestal_samples; j++) _handmade_pedestal += _pulse[j];
   _handmade_pedestal/=n_pedestal_samples;
@@ -479,12 +493,12 @@ void ZeeTreeProducer::FillDigi(EcalDataFrame digi, const EcalUncalibratedRecHitC
   else _amplitude_weight = it2->amplitude();
   
   
-  _amplitude_simple_multifit =  it->amplitude_simple();      
+  //---- FixStandard ----     _amplitude_simple_multifit =  it->amplitude_simple();      
   _amplitude_advanced_multifit = it->amplitude();
   
   
-  _best_chi2     = it->best_chi2();
-  _best_pedestal = it->best_pedestal();
+  //---- FixStandard ----     _best_chi2     = it->best_chi2();
+  //---- FixStandard ----     _best_pedestal = it->best_pedestal();
   _pedestal = it2->pedestal();
   
   

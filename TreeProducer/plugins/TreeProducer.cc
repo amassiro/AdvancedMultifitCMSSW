@@ -360,12 +360,12 @@ void TreeProducer::FillDigi(EcalDataFrame digi, const EcalUncalibratedRecHitColl
   else _amplitude_weight = it2->amplitude();
   
   
-  _amplitude_simple_multifit =  it->amplitude_simple();      
+  //---- FixStandard ----     _amplitude_simple_multifit =  it->amplitude_simple();      
   _amplitude_advanced_multifit = it->amplitude();
   
   
-  _best_chi2     = it->best_chi2();
-  _best_pedestal = it->best_pedestal();
+  //---- FixStandard ----     _best_chi2     = it->best_chi2();
+  //---- FixStandard ----     _best_pedestal = it->best_pedestal();
   _pedestal = it2->pedestal();
   
   
