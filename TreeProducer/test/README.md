@@ -8,7 +8,8 @@ Example
     https://cmswbm.cern.ch/cmsdb/servlet/RunSummary?RUN=283270
     /DoubleEG/Run2016H-ZElectron-PromptReco-v2/RAW-RECO
     
-    cmsRun runRecoPATAndDump2016.py  inputFiles=file:/tmp/amassiro/6C606673-CE84-E611-A7D4-02163E0126CD.root
+    cmsRun runRecoPATAndDump2016.py             inputFiles=file:/tmp/amassiro/6C606673-CE84-E611-A7D4-02163E0126CD.root
+    cmsRun runRecoPATAndDump2016floatingPed.py  inputFiles=file:/tmp/amassiro/6C606673-CE84-E611-A7D4-02163E0126CD.root
     
     
 plot:

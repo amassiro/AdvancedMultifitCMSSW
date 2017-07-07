@@ -35,14 +35,19 @@ config.Data.unitsPerJob   = 10
 
 
 
-config.JobType.psetName = '../runRecoPATAndDump2016.py'
 config.JobType.maxMemoryMB = 2500    # 2.5 GB
 
 config.Data.runRange = '283270'
 
-config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test07Jul2017/'
+#config.JobType.psetName = '../runRecoPATAndDump2016.py'
+#config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test07Jul2017/'
+#config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+#config.General.workArea     = 'crab_projects_7Jul2017_oneRun'
+
+config.JobType.psetName = '../runRecoPATAndDump2016floatingPed.py'
+config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/'
 config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
-config.General.workArea     = 'crab_projects_7Jul2017_oneRun'
+config.General.workArea     = 'crab_projects_7Jul2017_oneRun_floatingPedestal'
 
 
 
