@@ -202,6 +202,10 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       float _mee_advanced_multifit;
       float _mee_weight;
       
+      UInt_t   _evt_run;
+      UShort_t _evt_lumi;
+      UShort_t _evt_bx;
+      
       
       
 };
@@ -282,6 +286,10 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    
    
    outTreeElectrons = fs->make<TTree>("electrons","electrons");
+
+   outTreeElectrons->Branch("run",         &_evt_run,      "run/i");
+   outTreeElectrons->Branch("lumi",        &_evt_lumi,     "lumi/s");
+   outTreeElectrons->Branch("bx",          &_evt_bx,       "bx/s");
    
    outTreeElectrons->Branch("pt1_simple_multifit",        &_pt1_simple_multifit,     "pt1_simple_multifit/F");
    outTreeElectrons->Branch("pt1_advanced_multifit",      &_pt1_advanced_multifit,   "pt1_advanced_multifit/F");
@@ -340,6 +348,11 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
   _run = iEvent.eventAuxiliary().run();
   _lumi = iEvent.eventAuxiliary().luminosityBlock();
   _bx = iEvent.eventAuxiliary().bunchCrossing();
+  
+  _evt_run  = _run;
+  _evt_lumi = _lumi;
+  _evt_bx   = _bx;
+  
   
   edm::Handle<EBDigiCollection> ebdigihandle;
   edm::Handle<EEDigiCollection> eedigihandle;
