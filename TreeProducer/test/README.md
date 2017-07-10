@@ -31,8 +31,20 @@ plot:
     ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/0000/test_*.root | sed -e 's/0000/\ /g'  \
     |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/floating/"$2"\\\"\\\)"}'  | /bin/sh
     
+    hadd /tmp/amassiro/floating.root /tmp/amassiro/floating/*.root
+    
+    cp /tmp/amassiro/floating.root   /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/
+    
     
     
     ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170707_114845/0000/test_*.root | sed -e 's/0000/\ /g'  \
     |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/standard/"$2"\\\"\\\)"}'  | /bin/sh
     
+    hadd /tmp/amassiro/standard.root /tmp/amassiro/standard/*.root
+    
+    cp /tmp/amassiro/standard.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170707_114845/
+    
+    
+    
+    
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\"\)
