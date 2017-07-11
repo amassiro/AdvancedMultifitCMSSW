@@ -47,4 +47,12 @@ plot:
     
     
     
-    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"eta1_advanced_multifit\>1.5\&\&eta2_advanced_multifit\>1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+
+    
+    
+    
+    

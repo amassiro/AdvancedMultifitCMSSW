@@ -44,16 +44,28 @@ config.Data.runRange = '283270'
 #config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 #config.General.workArea     = 'crab_projects_7Jul2017_oneRun'
 
-hadd /tmp/amassiro/test_legacy.root /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170707_114845/0000/test_*.root
+#hadd /tmp/amassiro/test_legacy.root /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170707_114845/0000/test_*.root
 
 
-config.JobType.psetName = '../runRecoPATAndDump2016floatingPed.py'
+#config.JobType.psetName = '../runRecoPATAndDump2016floatingPed.py'
+#config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/'
+#config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+#config.General.workArea     = 'crab_projects_7Jul2017_oneRun_floatingPedestal'
+
+
+#hadd /tmp/amassiro/test_floating.root /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/0000/test_*.root
+
+
+
+#
+# GT modified by hand in the runRecoPATAndDump2016.py code
+#
+
+config.JobType.psetName = '../runRecoPATAndDump2016.py'
 config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/'
 config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
-config.General.workArea     = 'crab_projects_7Jul2017_oneRun_floatingPedestal'
+config.General.workArea     = 'crab_projects_7Jul2017_oneRun_singlePed'
 
 
-hadd /tmp/amassiro/test_floating.root /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/0000/test_*.root
-
-
+#hadd /tmp/amassiro/test_floating.root /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/0000/test_*.root
 
