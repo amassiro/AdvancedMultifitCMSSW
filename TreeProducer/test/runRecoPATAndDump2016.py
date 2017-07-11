@@ -76,7 +76,7 @@ process.GlobalTag.toGet = cms.VPSet(
 
           cms.PSet(record = cms.string("EcalPedestalsRcd"),
                    tag = cms.string("EcalPedestals_Legacy2016_v1"),
-                   connect = cms.untracked.string("frontier://FrontierProd/CMS_CONDITIONS")
+                   connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS")
                   ),
   
 )
