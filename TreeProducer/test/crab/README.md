@@ -12,6 +12,8 @@ Multicrab
 
     python multicrab.py   samples_file.py
     
+    
+    
     python multicrab.py crab_projects_7Jan2017_localReco     status
     python multicrab.py crab_projects_7Jan2017_localReco     status    --verboseErrors
     
@@ -22,4 +24,6 @@ Multicrab
     python multicrab.py crab_projects_7Jul2017_oneRun_floatingPedestal     status
     python multicrab.py crab_projects_7Jul2017_oneRun_floatingPedestal     status    --verboseErrors
 
-    
+    python multicrab.py crab_projects_7Jul2017_oneRun_singlePed     status
+    python multicrab.py crab_projects_7Jul2017_oneRun_singlePed     status    --verboseErrors
+
