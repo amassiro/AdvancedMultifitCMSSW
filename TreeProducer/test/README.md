@@ -45,14 +45,42 @@ plot:
     cp /tmp/amassiro/standard.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170707_114845/
     
     
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-singleRunPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170711_092233/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/oneRun/"$2"\\\"\\\)"}'  | /bin/sh
     
+    hadd /tmp/amassiro/oneRun.root /tmp/amassiro/oneRun/*.root
+    
+    cp /tmp/amassiro/oneRun.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-singleRunPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170711_092233/
+    
+
     
     r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
 
     r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"eta1_advanced_multifit\>1.5\&\&eta2_advanced_multifit\>1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
     r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"mee_advanced_multifit\",100,70,120,\"m_{ll}\",\"1\",\"standard\",\"eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\&\&eta1_advanced_multifit\>-1.5\&\&eta2_advanced_multifit\>-1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
 
     
+    
+    
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"pt1_advanced_multifit\",100,0,200,\"p_{T1}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"eta1_advanced_multifit\",100,-3,3,\"#eta_{1}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+
+    
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"pt2_advanced_multifit\",100,0,200,\"p_{T2}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/standard.root\",\"eta2_advanced_multifit\",100,-3,3,\"#eta_{2}\",\"1\",\"standard\",\"1\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+
+    
+    
+    r99t /tmp/amassiro/standard.root
+    tree = (TTree*) _file0 -> Get ("ZeeTreeProducer/electrons");
+    tree->Draw("mee_advanced_multifit:lumi", "mee_advanced_multifit>60 && mee_advanced_multifit<120", "colz")
+    
+    
+    r99t /tmp/amassiro/floating.root
+    tree = (TTree*) _file0 -> Get ("ZeeTreeProducer/electrons");
+    tree->Draw("mee_advanced_multifit:lumi", "mee_advanced_multifit>60 && mee_advanced_multifit<120", "colz")
     
     
     
