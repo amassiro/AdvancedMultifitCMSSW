@@ -176,10 +176,12 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       TTree *outTreeElectrons;
       float _pt1_simple_multifit;
       float _pt1_advanced_multifit;
+      float _pt1_advanced_multifit_raw;
       float _pt1_weight;
       
       float _pt2_simple_multifit;
       float _pt2_advanced_multifit;
+      float _pt2_advanced_multifit_raw;
       float _pt2_weight;
       
       float _eta1_simple_multifit;
@@ -201,6 +203,7 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       float _mee_simple_multifit;
       float _mee_advanced_multifit;
       float _mee_weight;
+      float _mee_advanced_multifit_raw;
       
       UInt_t   _evt_run;
       UShort_t _evt_lumi;
@@ -291,13 +294,15 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTreeElectrons->Branch("lumi",        &_evt_lumi,     "lumi/s");
    outTreeElectrons->Branch("bx",          &_evt_bx,       "bx/s");
    
-   outTreeElectrons->Branch("pt1_simple_multifit",        &_pt1_simple_multifit,     "pt1_simple_multifit/F");
-   outTreeElectrons->Branch("pt1_advanced_multifit",      &_pt1_advanced_multifit,   "pt1_advanced_multifit/F");
-   outTreeElectrons->Branch("pt1_weight",                 &_pt1_weight,              "pt1_weight/F");
+   outTreeElectrons->Branch("pt1_simple_multifit",        &_pt1_simple_multifit,         "pt1_simple_multifit/F");
+   outTreeElectrons->Branch("pt1_advanced_multifit",      &_pt1_advanced_multifit,       "pt1_advanced_multifit/F");
+   outTreeElectrons->Branch("pt1_advanced_multifit_raw",  &_pt1_advanced_multifit_raw,   "pt1_advanced_multifit_raw/F");
+   outTreeElectrons->Branch("pt1_weight",                 &_pt1_weight,                  "pt1_weight/F");
    
-   outTreeElectrons->Branch("pt2_simple_multifit",        &_pt2_simple_multifit,     "pt2_simple_multifit/F");
-   outTreeElectrons->Branch("pt2_advanced_multifit",      &_pt2_advanced_multifit,   "pt2_advanced_multifit/F");
-   outTreeElectrons->Branch("pt2_weight",                 &_pt2_weight,              "pt2_weight/F");
+   outTreeElectrons->Branch("pt2_simple_multifit",        &_pt2_simple_multifit,         "pt2_simple_multifit/F");
+   outTreeElectrons->Branch("pt2_advanced_multifit",      &_pt2_advanced_multifit,       "pt2_advanced_multifit/F");
+   outTreeElectrons->Branch("pt2_advanced_multifit_raw",  &_pt2_advanced_multifit_raw,   "pt2_advanced_multifit_raw/F");
+   outTreeElectrons->Branch("pt2_weight",                 &_pt2_weight,                  "pt2_weight/F");
    
    outTreeElectrons->Branch("eta1_simple_multifit",        &_eta1_simple_multifit,     "eta1_simple_multifit/F");
    outTreeElectrons->Branch("eta1_advanced_multifit",      &_eta1_advanced_multifit,   "eta1_advanced_multifit/F");
@@ -318,6 +323,8 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTreeElectrons->Branch("mee_simple_multifit",        &_mee_simple_multifit,     "mee_simple_multifit/F");
    outTreeElectrons->Branch("mee_advanced_multifit",      &_mee_advanced_multifit,   "mee_advanced_multifit/F");
    outTreeElectrons->Branch("mee_weight",                 &_mee_weight,              "mee_weight/F");
+
+   outTreeElectrons->Branch("mee_advanced_multifit_raw",      &_mee_advanced_multifit_raw,   "mee_advanced_multifit_raw/F");
    
 
 }
@@ -396,6 +403,8 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
   bool found1 = false;
   bool found2 = false;
   _mee_advanced_multifit = -999;
+  _mee_advanced_multifit_raw = -999;
+  
   for ( unsigned int i=0; i<electrons.size(); ++i ){
     reco::GsfElectron  electron = electrons.at(i);
     if (
@@ -404,9 +413,15 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
       && fabs(electron.deltaPhiSuperClusterTrackAtVtx()) < 10e-3
       && electron.dr03EcalRecHitSumEt() < 30
     ) {
+      
+      float raw_energy = electron.superCluster()->rawEnergy();
+      float tot_energy = electron.superCluster()->energy();
+      float ratio_raw2tot = raw_energy / tot_energy;
+      
       if (found1 == false) {
         L1 = electron.p4();
         _pt1_advanced_multifit = L1.pt();
+        _pt1_advanced_multifit_raw = _pt1_advanced_multifit * ratio_raw2tot;
         _eta1_advanced_multifit = L1.eta();
         _phi1_advanced_multifit = L1.phi();
         found1 = true;
@@ -415,9 +430,11 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
         L2 = electron.p4();
         found2 = true;
         _pt2_advanced_multifit = L2.pt();
+        _pt2_advanced_multifit_raw = _pt2_advanced_multifit * ratio_raw2tot;
         _eta2_advanced_multifit = L2.eta();
         _phi2_advanced_multifit = L2.phi();
         _mee_advanced_multifit = (L1+L2).mass();
+        _mee_advanced_multifit_raw = _mee_advanced_multifit * _pt2_advanced_multifit_raw/_pt2_advanced_multifit * _pt1_advanced_multifit_raw/_pt1_advanced_multifit;
       }
     }
   }

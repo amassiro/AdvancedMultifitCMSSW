@@ -204,12 +204,12 @@ process.RECOSIMoutput_step = cms.EndPath(process.RECOSIMoutput)
 #use_raw_dat = False
 #make_collections = ['digis']
 
-process.TreeProducer = cms.EDAnalyzer('TreeProducer',
-                           splitByLumi = cms.untracked.bool(False), # split the above average by lumisections (lumis must be in order in the file)
-                           nPedestalSamples = cms.untracked.uint32(3), # number of first samples used to measure the pedestal
-                           EBDigiCollection = cms.InputTag("ecalDigis","ebDigis"),
-                           EEDigiCollection = cms.InputTag("ecalDigis","eeDigis"),
-                           )
+#process.TreeProducer = cms.EDAnalyzer('TreeProducer',
+                           #splitByLumi = cms.untracked.bool(False), # split the above average by lumisections (lumis must be in order in the file)
+                           #nPedestalSamples = cms.untracked.uint32(3), # number of first samples used to measure the pedestal
+                           #EBDigiCollection = cms.InputTag("ecalDigis","ebDigis"),
+                           #EEDigiCollection = cms.InputTag("ecalDigis","eeDigis"),
+                           #)
 
 
 process.ZeeTreeProducer = cms.EDAnalyzer('ZeeTreeProducer',
@@ -252,7 +252,8 @@ process.ecalDigis_step = cms.Path(process.ecalDigis)
 process.multifit = cms.Path(process.ecalMultiFitUncalibRecHit)
 process.weights = cms.Path(process.ecalUncalibRecHit)
 
-process.TreeProducer_step = cms.Path(process.TreeProducer * process.ZeeTreeProducer)
+#process.TreeProducer_step = cms.Path(process.TreeProducer * process.ZeeTreeProducer)
+process.TreeProducer_step = cms.Path(process.ZeeTreeProducer)
 process.endjob_step = cms.EndPath(process.endOfProcess)
 
 #process.dump = cms.EDAnalyzer("EventContentAnalyzer")
