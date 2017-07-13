@@ -88,8 +88,14 @@ void Draw(std::string nameInFileRoot, std::string var = "etaSC", int NBIN = 1000
   
   //---- estetica
   for (int iSig = 0; iSig < nSig; iSig++) {
-    h_Sig[iSig]->SetMarkerColor (kRed+iSig);
-    h_Sig[iSig]->SetLineColor (kRed+iSig);
+    if (iSig == 1) {
+      h_Sig[iSig]->SetMarkerColor (kBlue);
+      h_Sig[iSig]->SetLineColor (kBlue);
+    }
+    else {
+      h_Sig[iSig]->SetMarkerColor (kRed+iSig);
+      h_Sig[iSig]->SetLineColor (kRed+iSig);
+    }
     h_Sig[iSig]->SetLineWidth(3);
     h_Sig[iSig]->SetLineStyle(1+iSig);
     h_Sig[iSig]->SetMarkerSize (0);
