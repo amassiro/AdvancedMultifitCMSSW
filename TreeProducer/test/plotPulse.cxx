@@ -22,6 +22,11 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   UInt_t cmsswindex;
   UInt_t isEB;
   
+  float eta;
+  float phi;
+  
+  UInt_t run;
+  
 //   std::vector<float>* pulse    = new std::vector<float>;
 //   std::vector<float>* position = new std::vector<float>;
   
@@ -37,11 +42,17 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
 
   tree->SetBranchAddress("cmsswindex",   &cmsswindex);
   tree->SetBranchAddress("isEB",   &isEB);
+  tree->SetBranchAddress("eta",      &eta);
+  tree->SetBranchAddress("phi",      &phi);
+  
+  tree->SetBranchAddress("run",   &run);
   
   
   tree->GetEntry(nXtal);
   
   
+  
+  float f_ix, f_iy, f_iz, f_ieta, f_iphi;
   
   //----
   //---- load pulses from DB
@@ -69,6 +80,15 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   getline(fEB, dummyLine);   // skip first line
   for (int iChannel = 0; iChannel < kEBChannels; iChannel++) {
     fEB >> cmsswEBId[iChannel] >> dbID >> hashedId >> iphi[iChannel] >> ieta[iChannel] >> absieta >> pos >> FED >> SM >> TT >>  iTT >> strip >> Xtal >> phiSM >> etaSM;
+    
+    if (cmsswEBId[iChannel] == cmsswindex) {
+      f_ieta =  ieta[iChannel];
+      f_iphi =  iphi[iChannel];
+      f_ix = -999;
+      f_iy = -999;
+      f_iz = -999;
+    }
+    
     if(hashedId != iChannel) {
       cout << "EB,txt strange hash " << hashedId << " while iChannel " << iChannel << endl;
       exit(-1);
@@ -94,6 +114,15 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   getline(fEE, dummyLine);   // skip first line
   for (int iChannel = 0; iChannel < 14648; iChannel++) {
     fEE >> cmsswEEId[iChannel] >> dbID >> hashedId >> iz[iChannel] >> ix[iChannel] >> iy[iChannel] >> SC >> iSC >> FED >> pos >> TT >> strip >> Xtal >> quadrant;
+    
+    if (cmsswEEId[iChannel] == cmsswindex) {
+      f_ix =  ix[iChannel];
+      f_iy =  iy[iChannel];
+      f_iz =  iz[iChannel];
+      f_ieta = -999;
+      f_iphi = -999;
+    }
+    
     if (hashedId != iChannel) {
       cout << "EE,txt strange hash " << hashedId << " while iChannel " << iChannel << endl;
       exit(-1);
@@ -111,8 +140,24 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   //----
   //---- now load the pulses file, but save only the one corresponding to the correct cmsswindex
   
-  std::cout << " isEB = " << isEB << std::endl;
   std::cout << " cmsswindex = " << cmsswindex << std::endl;
+  std::cout << "   isEB = " << isEB << std::endl;
+  std::cout << "   eta  = " << eta  << std::endl;
+  std::cout << "   phi  = " << phi  << std::endl;
+  std::cout << "   ieta = " << f_ieta << std::endl;
+  std::cout << "   iphi = " << f_iphi << std::endl;
+  std::cout << "   ix   = " << f_ix   << std::endl;
+  std::cout << "   iy   = " << f_iy   << std::endl;
+  std::cout << "   iz   = " << f_iz   << std::endl;
+  
+  std::cout << " run = " << run << std::endl;
+  
+  
+  std::cout << " Total #crystals = " << tree->GetEntries() << std::endl;
+  
+  
+  
+  
   
   
   std::ifstream filePulseShapes ("/afs/cern.ch/user/e/emanuele/w/public/ecal/pulseshapes_db/template_histograms_ECAL_Run2017_runs_297113_297114.txt"); 
@@ -145,7 +190,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
       
       line >> unum; 
       detId = unum;
-      
+
       if (detId == cmsswindex) {
         for (int i=0; i<(10+2); i++) {
           line >> value; 
@@ -228,7 +273,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
       if ((i - iBX +2) >= 0  &&  (i - iBX +2) < 12) {
 //         if (iBX ==5) value_multifit += ampl_multifit[iBX] * pulse_shape[i - iBX +2];
         value_multifit += ampl_multifit[iBX] * pulse_shape[i - iBX +2];
-        std::cout << " filling : " << iBX << std::endl;
+//         std::cout << " filling : " << iBX << std::endl;
       }
 
       if ((i - iBX +2) >= 0  &&  (i - iBX +2) < 12) {
@@ -338,6 +383,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   ccpulse->SetGrid();
   
   
+  ccpulse->SaveAs(Form("ccpulse__%d_%d.png", nXtal, run));
   
   
   
@@ -370,7 +416,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   ccpulse_components->SetGrid();
   
   
-  
+  ccpulse_components->SaveAs(Form("ccpulse_components_%d_%d.png", nXtal, run));
   
   
   

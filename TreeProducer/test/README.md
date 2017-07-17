@@ -14,10 +14,24 @@ Example
     cmsRun runRecoPATAndDump2016floatingPed.py  inputFiles=file:/tmp/amassiro/6C606673-CE84-E611-A7D4-02163E0126CD.root
     
     
+    
+    cmsRun runDump2016.py             inputFiles=file:/afs/cern.ch/user/a/askew/public/pickevents_2.root
+    cmsRun runDump2016.py             inputFiles=file:/afs/cern.ch/user/a/askew/public/pickevents_3.root
+    cmsRun runDump2016.py             inputFiles=file:/afs/cern.ch/user/a/askew/public/pickevents_4.root
+
+    
+    
+    
+    
+    
 plot:
 
     r00t plotPulse.cxx\(\"output.root\",1\)
 
+    for i in {0..8}; do    echo "r00t -q -b plotPulse.cxx\(\\\"output.root\\\",$i\)"; done
+    for i in {0..8}; do    r00t -q -b plotPulse.cxx\(\"output.root\",$i\); done
+    
+    
     r00t FilterTree.cxx\(\"output.root\",\"outputFilter.root\"\)
     r00t plotPulse.cxx\(\"outputFilter.root\",1\)
 
