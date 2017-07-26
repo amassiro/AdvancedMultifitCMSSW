@@ -81,7 +81,13 @@ void Draw(std::string nameInFileRoot, std::string var = "etaSC", int NBIN = 1000
   TString weight = Form ("1");
   TString toDraw;
   for (int iSig = 0; iSig < nSig; iSig++) {
+    
     toDraw = Form ("%s >> hSig_%d",var.c_str(),iSig);
+   
+    if (iSig == 1) {
+      toDraw = Form ("%s *8.66650e+01/9.27251e+01 >> hSig_%d",var.c_str(),iSig);
+    }
+    
     weight = Form ("(%s) * %f",globalCut.c_str(),vXsecSig.at(iSig));
     t_Sig[iSig]->Draw(toDraw.Data(),weight.Data(),"goff");
   }
@@ -115,6 +121,18 @@ void Draw(std::string nameInFileRoot, std::string var = "etaSC", int NBIN = 1000
   
   //---- normalized
   TCanvas* cn = new TCanvas ("cn","cn",800,600);
+  for (int iSig = 0; iSig < nSig; iSig++) {
+    TF1* mygaus = new TF1("mygaus","gaus",h_Sig[iSig]->GetMean() - h_Sig[iSig]->GetRMS(), h_Sig[iSig]->GetMean() + h_Sig[iSig]->GetRMS());
+    
+    h_Sig[iSig]->Fit("mygaus", "R");
+  
+    std::cout << " ~~~~~~~~~~~ " << std::endl;
+    std::cout << " resolution = " <<  mygaus->GetParameter(2) / mygaus->GetParameter(1) << std::endl;
+    std::cout << " resolution (RMS) = " <<  h_Sig[iSig]->GetRMS() / h_Sig[iSig]->GetMean() << std::endl;
+    std::cout << " ~~~~~~~~~~~ " << std::endl;
+    
+  }
+  
   for (int iSig = 0; iSig < nSig; iSig++) {
     if (iSig ==0) h_Sig[iSig]->DrawNormalized();
     else h_Sig[iSig]->DrawNormalized("same");
