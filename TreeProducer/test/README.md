@@ -96,6 +96,17 @@ plot:
     
     
     
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test24Jul2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170725_110542/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/floating-RAW/"$2"\\\"\\\)"}'  | /bin/sh
+    
+    hadd /tmp/amassiro/floating.root /tmp/amassiro/floating-RAW/*.root
+    
+    cp /tmp/amassiro/floating.root   /eos/cms/store/user/amassiro/ECAL/LocalReco/test24Jul2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170725_110542/
+    
+
+    
+    
+    
  
     ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-singleRunPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170713_152136/0000/test_*.root | sed -e 's/0000/\ /g'  \
     |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/oneRun-RAW/"$2"\\\"\\\)"}'  | /bin/sh
