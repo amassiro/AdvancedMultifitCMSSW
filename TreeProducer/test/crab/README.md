@@ -27,3 +27,5 @@ Multicrab
     python multicrab.py crab_projects_7Jul2017_oneRun_singlePed     status
     python multicrab.py crab_projects_7Jul2017_oneRun_singlePed     status    --verboseErrors
 
+    python multicrab.py crab_projects_7Jul2017_oneRun_increasedNoise     status
+    python multicrab.py crab_projects_7Jul2017_oneRun_increasedNoise     status    --verboseErrors

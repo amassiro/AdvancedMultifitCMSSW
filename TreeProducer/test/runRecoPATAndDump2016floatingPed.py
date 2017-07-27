@@ -234,12 +234,15 @@ process.ecalMultiFitUncalibRecHit.EBdigiCollection = cms.InputTag("ecalDigis","e
 process.ecalMultiFitUncalibRecHit.EEdigiCollection = cms.InputTag("ecalDigis","eeDigis")
 process.ecalMultiFitUncalibRecHit.algoPSet.useLumiInfoRunHeader = cms.bool(False)
 
+
+
+
 #
-# activate floating pedestal
+# activate increased noise
 #  https://cmssdt.cern.ch/lxr/source/RecoLocalCalo/EcalRecProducers/python/ecalMultiFitUncalibRecHit_cfi.py
 #
-process.ecalMultiFitUncalibRecHit.algoPSet.dynamicPedestalsEB = cms.bool(True)
-process.ecalMultiFitUncalibRecHit.algoPSet.dynamicPedestalsEE = cms.bool(True)
+process.ecalMultiFitUncalibRecHit.algoPSet.addPedestalUncertaintyEB = cms.double(2.0)   # adc counts?
+process.ecalMultiFitUncalibRecHit.algoPSet.addPedestalUncertaintyEE = cms.double(4.0)   # adc counts?
 #
 #
 
