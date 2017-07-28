@@ -80,8 +80,8 @@ config.Data.runRange = '283270'
 #
 
 config.JobType.psetName = '../runRecoPATAndDump2016noiseIncrease.py'
-config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test27Jul2017-increasedNoise-RAW/'
+config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test28Jul2017-increasedNoise-RAW/'
 config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
-config.General.workArea     = 'crab_projects_7Jul2017_oneRun_increasedNoise'
+config.General.workArea     = 'crab_projects_28Jul2017_oneRun_increasedNoise'
 
 

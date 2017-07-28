@@ -116,7 +116,22 @@ plot:
     cp /tmp/amassiro/oneRun.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-singleRunPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170713_152136/
     
 
+
     
+    
+    
+    
+    
+ 
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test28Jul2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170727_143548/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/increasedNoise-RAW/"$2"\\\"\\\)"}'  | /bin/sh
+    
+    hadd /tmp/amassiro/increasedNoise.root /tmp/amassiro/increasedNoise-RAW/*.root
+    
+    cp /tmp/amassiro/increasedNoise.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test28Jul2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170727_143548/
+    
+
+
     
     
     
@@ -146,6 +161,12 @@ plot:
     
     r99t Draw.cxx\(\"/tmp/amassiro/oneRun.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}-raw\",\"1\",\"RunBased\",\"eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\",\"/tmp/amassiro/floating.root\",\"floating\"\)
     r99t Draw.cxx\(\"/tmp/amassiro/oneRun.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}-raw\",\"1\",\"RunBased\",\"\!\(eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\)\",\"/tmp/amassiro/floating.root\",\"floating\"\)
+    
+    
+    
+    r99t Draw.cxx\(\"/tmp/amassiro/oneRun.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}-raw\",\"1\",\"RunBased\",\"1\",\"/tmp/amassiro/increasedNoise.root\",\"increasedNoise\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/oneRun.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}-raw\",\"1\",\"RunBased\",\"eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\",\"/tmp/amassiro/increasedNoise.root\",\"increasedNoise\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/oneRun.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}-raw\",\"1\",\"RunBased\",\"\!\(eta1_advanced_multifit\<1.5\&\&eta2_advanced_multifit\<1.5\)\",\"/tmp/amassiro/increasedNoise.root\",\"increasedNoise\"\)
     
     
     
