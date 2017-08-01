@@ -131,6 +131,7 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       UInt_t _run;
       UShort_t _lumi;
       UShort_t _bx;
+      UShort_t _event;
       UInt_t _id;
       UInt_t _cmsswindex;
       int _isEB;
@@ -207,6 +208,7 @@ class ZeeTreeProducer : public edm::one::EDAnalyzer<edm::one::SharedResources>  
       
       UInt_t   _evt_run;
       UShort_t _evt_lumi;
+      UShort_t _evt_event;
       UShort_t _evt_bx;
       
       
@@ -255,6 +257,7 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTree->Branch("run",         &_run,      "run/i");
    outTree->Branch("lumi",        &_lumi,     "lumi/s");
    outTree->Branch("bx",          &_bx,       "bx/s");
+   outTree->Branch("event",        &_event,     "event/i");
    outTree->Branch("id",          &_id,       "id/i");
    outTree->Branch("gainratios",  _gainratios,"gainratios[2]/F");
    outTree->Branch("eta",         &_eta,      "eta/F");
@@ -291,6 +294,7 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTreeElectrons = fs->make<TTree>("electrons","electrons");
 
    outTreeElectrons->Branch("run",         &_evt_run,      "run/i");
+   outTreeElectrons->Branch("event",       &_evt_event,    "event/i");
    outTreeElectrons->Branch("lumi",        &_evt_lumi,     "lumi/s");
    outTreeElectrons->Branch("bx",          &_evt_bx,       "bx/s");
    
@@ -355,9 +359,13 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
   _run = iEvent.eventAuxiliary().run();
   _lumi = iEvent.eventAuxiliary().luminosityBlock();
   _bx = iEvent.eventAuxiliary().bunchCrossing();
+  _event = iEvent.eventAuxiliary().event();
+  
+  
   
   _evt_run  = _run;
   _evt_lumi = _lumi;
+  _evt_event = _event;
   _evt_bx   = _bx;
   
   

@@ -36,6 +36,8 @@ plot:
     r00t plotPulse.cxx\(\"outputFilter.root\",1\)
 
     
+    
+    
     r00t FilterTreeZee.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-floatingPedestal/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170708_143814/0000/test_90.root\",\"outputFilterZee.root\"\)
 
     
@@ -104,6 +106,16 @@ plot:
     cp /tmp/amassiro/floating.root   /eos/cms/store/user/amassiro/ECAL/LocalReco/test24Jul2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170725_110542/
     
 
+    
+    r00t plotPulse.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test24Jul2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170725_110542/0000/test_8.root\",1\)
+
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test24Jul2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170725_110542/0000/test_1.root\",\"/tmp/amassiro/pulse_floatingPedestal.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test28Jul2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170727_143548/0000/test_1.root\",\"/tmp/amassiro/pulse_increasedNoise.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test07Jul2017-singleRunPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170713_152136/0000/test_1.root\",\"/tmp/amassiro/pulse_singlePed.root\"\)
+
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_floatingPedestal.root\",1\)
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_increasedNoise.root\",1\)
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_singlePed.root\",1\)
     
     
     

@@ -46,6 +46,13 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   tree->SetBranchAddress("phi",      &phi);
   
   tree->SetBranchAddress("run",   &run);
+
+  UShort_t lumi;
+  UShort_t bx;
+  
+  tree->SetBranchAddress("lumi",   &lumi);
+  tree->SetBranchAddress("bx",   &bx);
+  
   
   
   tree->GetEntry(nXtal);
@@ -150,7 +157,12 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   std::cout << "   iy   = " << f_iy   << std::endl;
   std::cout << "   iz   = " << f_iz   << std::endl;
   
-  std::cout << " run = " << run << std::endl;
+  std::cout << " ----- " << std::endl;
+  std::cout << " run  = " << run  << std::endl;
+  std::cout << " bx   = " << bx   << std::endl;
+  std::cout << " lumi = " << lumi << std::endl;
+  std::cout << " ----- " << std::endl;
+  
   
   
   std::cout << " Total #crystals = " << tree->GetEntries() << std::endl;
@@ -392,7 +404,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   
   
   
-  TCanvas* ccpulse_components = new TCanvas ("ccpulse_components","",800,600);
+  TCanvas* ccpulse_components = new TCanvas ("ccpulse_components","components",800,600);
   ccpulse_components->SetRightMargin(0.3);
   
   TMultiGraph* mg_multifit = new TMultiGraph();
@@ -412,6 +424,9 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   mg_multifit->GetYaxis()->SetTitle("ADC counts");
   
   leg_components->Draw();
+  
+  gr->Draw("PL");
+  gr_pedestal->Draw("L");
   
   ccpulse_components->SetGrid();
   
