@@ -35,3 +35,8 @@ Multicrab
 
     
     
+    
+    python multicrab.py    crab_projects_04Aug2017_oneRun_increasedNoise        status
+    python multicrab.py    crab_projects_04Aug2017_oneRun_floatingPedestal      status
+    python multicrab.py    crab_projects_04Aug2017_oneRun_RunBased              status
+    python multicrab.py    crab_projects_04Aug2017_oneRun_TimeBased             status

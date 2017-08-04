@@ -68,7 +68,6 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 # for 2016 Legacy data
 process.GlobalTag.globaltag = '80X_dataRun2_2016LegacyRepro_v3'
 
-
 #
 # activate the Run based
 #
@@ -81,6 +80,8 @@ process.GlobalTag.toGet = cms.VPSet(
                   ),
   
 )
+
+
 
 
 
@@ -246,17 +247,6 @@ process.ecalUncalibRecHit.EEdigiCollection = cms.InputTag("ecalDigis","eeDigis")
 process.ecalMultiFitUncalibRecHit.EBdigiCollection = cms.InputTag("ecalDigis","ebDigis")
 process.ecalMultiFitUncalibRecHit.EEdigiCollection = cms.InputTag("ecalDigis","eeDigis")
 process.ecalMultiFitUncalibRecHit.algoPSet.useLumiInfoRunHeader = cms.bool(False)
-
-#
-# activate increased noise
-#  https://cmssdt.cern.ch/lxr/source/RecoLocalCalo/EcalRecProducers/python/ecalMultiFitUncalibRecHit_cfi.py
-#
-process.ecalMultiFitUncalibRecHit.algoPSet.addPedestalUncertaintyEB = cms.double(1.0)   # adc counts?
-process.ecalMultiFitUncalibRecHit.algoPSet.addPedestalUncertaintyEE = cms.double(2.0)   # adc counts?
-#
-#
-
-
 
 process.ecalDigis_step = cms.Path(process.ecalDigis)
 process.multifit = cms.Path(process.ecalMultiFitUncalibRecHit)

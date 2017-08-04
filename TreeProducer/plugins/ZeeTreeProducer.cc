@@ -298,31 +298,31 @@ ZeeTreeProducer::ZeeTreeProducer(const edm::ParameterSet& iConfig)
    outTreeElectrons->Branch("lumi",        &_evt_lumi,     "lumi/s");
    outTreeElectrons->Branch("bx",          &_evt_bx,       "bx/s");
    
-   outTreeElectrons->Branch("pt1_simple_multifit",        &_pt1_simple_multifit,         "pt1_simple_multifit/F");
+//    outTreeElectrons->Branch("pt1_simple_multifit",        &_pt1_simple_multifit,         "pt1_simple_multifit/F");
    outTreeElectrons->Branch("pt1_advanced_multifit",      &_pt1_advanced_multifit,       "pt1_advanced_multifit/F");
    outTreeElectrons->Branch("pt1_advanced_multifit_raw",  &_pt1_advanced_multifit_raw,   "pt1_advanced_multifit_raw/F");
-   outTreeElectrons->Branch("pt1_weight",                 &_pt1_weight,                  "pt1_weight/F");
+//    outTreeElectrons->Branch("pt1_weight",                 &_pt1_weight,                  "pt1_weight/F");
    
-   outTreeElectrons->Branch("pt2_simple_multifit",        &_pt2_simple_multifit,         "pt2_simple_multifit/F");
+//    outTreeElectrons->Branch("pt2_simple_multifit",        &_pt2_simple_multifit,         "pt2_simple_multifit/F");
    outTreeElectrons->Branch("pt2_advanced_multifit",      &_pt2_advanced_multifit,       "pt2_advanced_multifit/F");
    outTreeElectrons->Branch("pt2_advanced_multifit_raw",  &_pt2_advanced_multifit_raw,   "pt2_advanced_multifit_raw/F");
-   outTreeElectrons->Branch("pt2_weight",                 &_pt2_weight,                  "pt2_weight/F");
+//    outTreeElectrons->Branch("pt2_weight",                 &_pt2_weight,                  "pt2_weight/F");
    
-   outTreeElectrons->Branch("eta1_simple_multifit",        &_eta1_simple_multifit,     "eta1_simple_multifit/F");
+//    outTreeElectrons->Branch("eta1_simple_multifit",        &_eta1_simple_multifit,     "eta1_simple_multifit/F");
    outTreeElectrons->Branch("eta1_advanced_multifit",      &_eta1_advanced_multifit,   "eta1_advanced_multifit/F");
-   outTreeElectrons->Branch("eta1_weight",                 &_eta1_weight,              "eta1_weight/F");
+//    outTreeElectrons->Branch("eta1_weight",                 &_eta1_weight,              "eta1_weight/F");
    
-   outTreeElectrons->Branch("eta2_simple_multifit",        &_eta2_simple_multifit,     "eta2_simple_multifit/F");
+//    outTreeElectrons->Branch("eta2_simple_multifit",        &_eta2_simple_multifit,     "eta2_simple_multifit/F");
    outTreeElectrons->Branch("eta2_advanced_multifit",      &_eta2_advanced_multifit,   "eta2_advanced_multifit/F");
-   outTreeElectrons->Branch("eta2_weight",                 &_eta2_weight,              "eta2_weight/F");
+//    outTreeElectrons->Branch("eta2_weight",                 &_eta2_weight,              "eta2_weight/F");
    
-   outTreeElectrons->Branch("phi1_simple_multifit",        &_phi1_simple_multifit,     "phi1_simple_multifit/F");
+//    outTreeElectrons->Branch("phi1_simple_multifit",        &_phi1_simple_multifit,     "phi1_simple_multifit/F");
    outTreeElectrons->Branch("phi1_advanced_multifit",      &_phi1_advanced_multifit,   "phi1_advanced_multifit/F");
-   outTreeElectrons->Branch("phi1_weight",                 &_phi1_weight,              "phi1_weight/F");
+//    outTreeElectrons->Branch("phi1_weight",                 &_phi1_weight,              "phi1_weight/F");
    
-   outTreeElectrons->Branch("phi2_simple_multifit",        &_phi2_simple_multifit,     "phi2_simple_multifit/F");
+//    outTreeElectrons->Branch("phi2_simple_multifit",        &_phi2_simple_multifit,     "phi2_simple_multifit/F");
    outTreeElectrons->Branch("phi2_advanced_multifit",      &_phi2_advanced_multifit,   "phi2_advanced_multifit/F");
-   outTreeElectrons->Branch("phi2_weight",                 &_phi2_weight,              "phi2_weight/F");
+//    outTreeElectrons->Branch("phi2_weight",                 &_phi2_weight,              "phi2_weight/F");
 
    outTreeElectrons->Branch("mee_simple_multifit",        &_mee_simple_multifit,     "mee_simple_multifit/F");
    outTreeElectrons->Branch("mee_advanced_multifit",      &_mee_advanced_multifit,   "mee_advanced_multifit/F");
@@ -454,15 +454,17 @@ ZeeTreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
   
   
 
-#ifdef THIS_IS_AN_EVENT_EXAMPLE
-   edm::Handle<ExampleData> pIn;
-   iEvent.getByLabel("example",pIn);
-#endif
+// #ifdef THIS_IS_AN_EVENT_EXAMPLE
+//    edm::Handle<ExampleData> pIn;
+//    iEvent.getByLabel("example",pIn);
+// #endif
+//    
+// #ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
+//    edm::ESHandle<SetupData> pSetup;
+//    iSetup.get<SetupRecord>().get(pSetup);
+// #endif
    
-#ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
-   edm::ESHandle<SetupData> pSetup;
-   iSetup.get<SetupRecord>().get(pSetup);
-#endif
+   
 }
 
 

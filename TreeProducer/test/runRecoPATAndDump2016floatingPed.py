@@ -69,6 +69,20 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 process.GlobalTag.globaltag = '80X_dataRun2_2016LegacyRepro_v3'
 
 
+#
+# activate the Run based
+#
+
+process.GlobalTag.toGet = cms.VPSet(
+
+          cms.PSet(record = cms.string("EcalPedestalsRcd"),
+                   tag = cms.string("EcalPedestals_Legacy2016_v1"),
+                   connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS")
+                  ),
+  
+)
+
+
 
 
 process.RECOSIMoutput = cms.OutputModule("PoolOutputModule",

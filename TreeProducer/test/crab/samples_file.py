@@ -75,13 +75,55 @@ config.Data.runRange = '283270'
 
 
 
+##
+## increased noise in EB and EE
+##
+
+#config.JobType.psetName = '../runRecoPATAndDump2016noiseIncrease.py'
+#config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/'
+#config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+#config.General.workArea     = 'crab_projects_04Aug2017_oneRun_increasedNoise'
+
+
+
+
+##
+## Floating pedestal
+##
+
+#config.JobType.psetName = '../runRecoPATAndDump2016floatingPed.py'
+#config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/'
+#config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+#config.General.workArea     = 'crab_projects_04Aug2017_oneRun_floatingPedestal'
+
+
+
+##
+## Run based
+##
+
+#config.JobType.psetName = '../runRecoPATAndDump2016RunBased.py'
+#config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/'
+#config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+#config.General.workArea     = 'crab_projects_04Aug2017_oneRun_RunBased'
+
+
+
+
+
 #
-# increased noise in EB and EE
+# Time based
 #
 
-config.JobType.psetName = '../runRecoPATAndDump2016noiseIncrease.py'
-config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test28Jul2017-increasedNoise-RAW/'
+config.JobType.psetName = '../runRecoPATAndDump2016.py'
+config.Data.outLFNDirBase = '/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/'
 config.Data.lumiMask = "/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
-config.General.workArea     = 'crab_projects_28Jul2017_oneRun_increasedNoise'
+config.General.workArea     = 'crab_projects_04Aug2017_oneRun_TimeBased'
+
+
+
+
+
+
 
 
