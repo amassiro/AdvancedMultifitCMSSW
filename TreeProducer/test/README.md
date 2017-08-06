@@ -75,6 +75,41 @@ plot:
     
     
     
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/RunBased/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/RunBased.root /tmp/amassiro/RunBased/*.root
+    cp /tmp/amassiro/RunBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/increasedNoise/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/increasedNoise.root /tmp/amassiro/increasedNoise/*.root
+    cp /tmp/amassiro/increasedNoise.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/TimeBased/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/TimeBased.root /tmp/amassiro/TimeBased/*.root
+    cp /tmp/amassiro/TimeBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/floatingPedestal/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/floatingPedestal.root /tmp/amassiro/floatingPedestal/*.root
+    cp /tmp/amassiro/floatingPedestal.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/
+
+    
+    
+    
+    
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/
+    
+    
+    
     
     
     
