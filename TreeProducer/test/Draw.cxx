@@ -85,7 +85,10 @@ void Draw(std::string nameInFileRoot, std::string var = "etaSC", int NBIN = 1000
     toDraw = Form ("%s >> hSig_%d",var.c_str(),iSig);
    
     if (iSig == 1) {
-      toDraw = Form ("%s *8.66650e+01/9.27251e+01 >> hSig_%d",var.c_str(),iSig);
+//       toDraw = Form ("%s *8.66650e+01/9.27251e+01 >> hSig_%d",var.c_str(),iSig);
+//       toDraw = Form ("%s * 1. >> hSig_%d",var.c_str(),iSig);
+      toDraw = Form ("%s * 8.73838e+01  / 9.30264e+01 >> hSig_%d",var.c_str(),iSig);  //----> only for floating pedestals
+      
     }
     
     weight = Form ("(%s) * %f",globalCut.c_str(),vXsecSig.at(iSig));
@@ -122,7 +125,7 @@ void Draw(std::string nameInFileRoot, std::string var = "etaSC", int NBIN = 1000
   //---- normalized
   TCanvas* cn = new TCanvas ("cn","cn",800,600);
   for (int iSig = 0; iSig < nSig; iSig++) {
-    TF1* mygaus = new TF1("mygaus","gaus",h_Sig[iSig]->GetMean() - h_Sig[iSig]->GetRMS(), h_Sig[iSig]->GetMean() + h_Sig[iSig]->GetRMS());
+    TF1* mygaus = new TF1("mygaus","gaus",h_Sig[iSig]->GetMean() - 0.2 * h_Sig[iSig]->GetRMS(), h_Sig[iSig]->GetMean() + h_Sig[iSig]->GetRMS());
     
     h_Sig[iSig]->Fit("mygaus", "R");
   

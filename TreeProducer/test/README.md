@@ -75,45 +75,6 @@ plot:
     
     
     
-    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/test_*.root | sed -e 's/0000/\ /g'  \
-    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/RunBased/"$2"\\\"\\\)"}'  | /bin/sh
-    hadd /tmp/amassiro/RunBased.root /tmp/amassiro/RunBased/*.root
-    cp /tmp/amassiro/RunBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/
-
-    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/test_*.root | sed -e 's/0000/\ /g'  \
-    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/increasedNoise/"$2"\\\"\\\)"}'  | /bin/sh
-    hadd /tmp/amassiro/increasedNoise.root /tmp/amassiro/increasedNoise/*.root
-    cp /tmp/amassiro/increasedNoise.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/
-
-    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/test_*.root | sed -e 's/0000/\ /g'  \
-    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/TimeBased/"$2"\\\"\\\)"}'  | /bin/sh
-    hadd /tmp/amassiro/TimeBased.root /tmp/amassiro/TimeBased/*.root
-    cp /tmp/amassiro/TimeBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/
-
-    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/test_*.root | sed -e 's/0000/\ /g'  \
-    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/floatingPedestal/"$2"\\\"\\\)"}'  | /bin/sh
-    hadd /tmp/amassiro/floatingPedestal.root /tmp/amassiro/floatingPedestal/*.root
-    cp /tmp/amassiro/floatingPedestal.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/
-
-    
-    
-    
-    
-    
-    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/
-    
-    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/
-    
-    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/
-    
-    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -194,6 +155,91 @@ plot:
     
     
     
+    
+    
+    
+        
+    
+    
+    
+    
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/RunBased/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/RunBased.root /tmp/amassiro/RunBased/*.root
+    cp /tmp/amassiro/RunBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/increasedNoise/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/increasedNoise.root /tmp/amassiro/increasedNoise/*.root
+    cp /tmp/amassiro/increasedNoise.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/TimeBased/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/TimeBased.root /tmp/amassiro/TimeBased/*.root
+    cp /tmp/amassiro/TimeBased.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/
+
+    ls /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/test_*.root | sed -e 's/0000/\ /g'  \
+    |  awk '{print "root -l -b -q FilterTreeZee.cxx\\\(\\\""$1"0000"$2"\\\",\\\"/tmp/amassiro/floatingPedestal/"$2"\\\"\\\)"}'  | /bin/sh
+    hadd /tmp/amassiro/floatingPedestal.root /tmp/amassiro/floatingPedestal/*.root
+    cp /tmp/amassiro/floatingPedestal.root  /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/
+
+    
+    
+
+    
+    
+    
+    
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/test_1.root\",\"/tmp/amassiro/pulse_RunBased.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/test_1.root\",\"/tmp/amassiro/pulse_increasedNoise.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/test_1.root\",\"/tmp/amassiro/pulse_TimeBased.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_1.root\",\"/tmp/amassiro/pulse_floatingPedestal.root\"\)
+
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_1.root\",\"/tmp/amassiro/pulse_floatingPedestal.1.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_10.root\",\"/tmp/amassiro/pulse_floatingPedestal.10.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_20.root\",\"/tmp/amassiro/pulse_floatingPedestal.20.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_30.root\",\"/tmp/amassiro/pulse_floatingPedestal.30.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_40.root\",\"/tmp/amassiro/pulse_floatingPedestal.40.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_100.root\",\"/tmp/amassiro/pulse_floatingPedestal.100.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_110.root\",\"/tmp/amassiro/pulse_floatingPedestal.110.root\"\)
+    r00t -q FilterTree.cxx\(\"/eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000//test_140.root\",\"/tmp/amassiro/pulse_floatingPedestal.140.root\"\)
+    
+    
+    
+    
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_RunBased.root\",1\)
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_increasedNoise.root\",1\)
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_TimeBased.root\",1\)
+    r00t plotPulse.cxx\(\"/tmp/amassiro/pulse_floatingPedestal.root\",1\)
+
+    
+    
+    
+    
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-RunBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080653/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-increasedNoise-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080454/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-TimeBased-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080742/0000/
+    
+    /eos/cms/store/user/amassiro/ECAL/LocalReco/test04Aug2017-floatingPedestal-RAW/DoubleEG/crab_DoubleEG_Run2016H-OneRun/170804_080621/0000/
+    
+    
+
+    
+    
+    
+    RunBased.root
+    increasedNoise.root
+    TimeBased.root
+    floatingPedestal.root
+
+    
+    
+    r99t Draw.cxx\(\"/tmp/amassiro/RunBased.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}\",\"1\",\"RunBased\",\"1\",\"/tmp/amassiro/increasedNoise.root\",\"increasedNoise\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/RunBased.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}\",\"1\",\"RunBased\",\"1\",\"/tmp/amassiro/TimeBased.root\",\"TimeBased\"\)
+    r99t Draw.cxx\(\"/tmp/amassiro/RunBased.root\",\"mee_advanced_multifit_raw\",100,70,120,\"m_{ll}\",\"1\",\"RunBased\",\"1\",\"/tmp/amassiro/floatingPedestal.root\",\"floating\"\)
     
     
     
