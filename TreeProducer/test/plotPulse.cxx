@@ -3,10 +3,6 @@
 void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   
   
-  
-  
-  
-  
   TFile *file = new TFile(nameInputFile.c_str());
   
   TTree* tree = (TTree*) file->Get("ZeeTreeProducer/pulses");
