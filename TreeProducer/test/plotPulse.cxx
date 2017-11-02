@@ -1,6 +1,6 @@
 //---- plot output of multifit
 
-void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
+void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10, UInt_t cmsswindexToSelect = -1, int whichOccurrence = 0){
   
   
   TFile *file = new TFile(nameInputFile.c_str());
@@ -50,6 +50,22 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   tree->SetBranchAddress("bx",   &bx);
   
   
+  int iOccurrence = 0;
+  
+
+  if (cmsswindexToSelect != -1) {
+    for (int iXtal = 0; iXtal < tree->GetEntries(); iXtal++) {
+      tree->GetEntry(iXtal);
+      if (cmsswindex == cmsswindexToSelect) {
+        std::cout << " found : " << cmsswindex << " iXtal = " << iXtal << std::endl;
+        nXtal = iXtal;
+        
+        iOccurrence++;
+        if (whichOccurrence<iOccurrence) break;
+        
+      }
+    }
+  }
   
   tree->GetEntry(nXtal);
   
@@ -164,11 +180,17 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   std::cout << " Total #crystals = " << tree->GetEntries() << std::endl;
   
   
+  std::cout << std::endl;
+  std::cout << std::endl;
+  std::cout << std::endl;
   
   
   
   
-  std::ifstream filePulseShapes ("/afs/cern.ch/user/e/emanuele/w/public/ecal/pulseshapes_db/template_histograms_ECAL_Run2017_runs_297113_297114.txt"); 
+//   std::ifstream filePulseShapes ("/afs/cern.ch/user/e/emanuele/w/public/ecal/pulseshapes_db/template_histograms_ECAL_Run2017_runs_297113_297114.txt"); 
+  std::ifstream filePulseShapes ("/afs/cern.ch/user/e/emanuele/w/public/ecal/pulseshapes_db/template_histograms_ECAL_Run2017_runs_304740_304740.txt");   
+//   std::ifstream filePulseShapes ("/afs/cern.ch/user/e/emanuele/w/public/ecal/pulseshapes_db/template_histograms_ECAL.txt"); 
+  
   
   std::string buffer;
   int num;
@@ -180,10 +202,12 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
     return false;
   }
   
+  int foundPulseShape = 0;
+  
   while (!filePulseShapes.eof()) {
     
     int iDet = 0;
-    int detId = 0;
+    UInt_t detId = 0;
     
      getline(filePulseShapes,buffer);
     if (buffer != ""){ ///---> save from empty line at the end!
@@ -209,15 +233,54 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
           pulse_shape[i] = value;
         }
         
-        std::cout << " found " << std::endl;
-        
+        std::cout << " found pulse shape " << std::endl;
+        foundPulseShape = 1;
+         
         break;
       }
     }
   }
   
+  
+  //---- Test Beam shape
+  //---- https://github.com/cms-sw/cmssw/blob/master/RecoLocalCalo/EcalRecProducers/python/ecalPulseShapeParameters_cff.py#L3-L11
+  if (foundPulseShape == 0) {
+    std::cout << " Not found pulse shape: loading from TB data " << std::endl;
+    if (isEB) {
+      pulse_shape[0]  = 1.13979e-02;
+      pulse_shape[1]  = 7.58151e-01;
+      pulse_shape[2]  = 1.00000e+00;
+      pulse_shape[3]  = 8.87744e-01;
+      pulse_shape[4]  = 6.73548e-01;
+      pulse_shape[5]  = 4.74332e-01;
+      pulse_shape[6]  = 3.19561e-01;
+      pulse_shape[7]  = 2.15144e-01;
+      pulse_shape[8]  = 1.47464e-01;
+      pulse_shape[9]  = 1.01087e-01;
+      pulse_shape[10] = 6.93181e-02;
+      pulse_shape[11] = 4.75044e-02;
+      
+    }
+    else {
+      pulse_shape[0]  = 1.16442e-01;
+      pulse_shape[1]  = 7.56246e-01;
+      pulse_shape[2]  = 1.00000e+00;
+      pulse_shape[3]  = 8.97182e-01;
+      pulse_shape[4]  = 6.86831e-01;
+      pulse_shape[5]  = 4.91506e-01;
+      pulse_shape[6]  = 3.44111e-01;
+      pulse_shape[7]  = 2.45731e-01;
+      pulse_shape[8]  = 1.74115e-01;
+      pulse_shape[9]  = 1.23361e-01;
+      pulse_shape[10] = 8.74288e-02;
+      pulse_shape[11] = 6.19570e-02;
+    }
+  }
+ 
+  
+  
   for(int iBX=0; iBX<12; iBX++){
-    std::cout << " iBX => " << pulse_shape[iBX] << std::endl;
+    std::cout << "     iBX => " << pulse_shape[iBX] << std::endl;
   }
   
   std::cout << std::endl;
@@ -239,7 +302,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   
   
   
-  TCanvas* ccpulse = new TCanvas ("ccpulse","",800,600);
+  TCanvas* ccpulse = new TCanvas ("ccpulse","pulse",800,600);
   TGraph *gr = new TGraph();
   
   TGraph *gr_pedestal = new TGraph();
@@ -413,7 +476,11 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
     std::string name = " BX " + std::to_string(i);
     leg_components->AddEntry(gr_reco_pulse_components[i], name.c_str(), "PL");
   }
+  
   mg_multifit->Add(gr_reco_pulse);
+  
+  mg_multifit->Add(gr);
+  mg_multifit->Add(gr_pedestal);
   
   mg_multifit->Draw("APL");
   mg_multifit->GetXaxis()->SetTitle("time [ns]");
@@ -421,8 +488,8 @@ void plotPulse (std::string nameInputFile = "output.root", int nXtal = 10){
   
   leg_components->Draw();
   
-  gr->Draw("PL");
-  gr_pedestal->Draw("L");
+//   gr->Draw("PL");
+//   gr_pedestal->Draw("L");
   
   ccpulse_components->SetGrid();
   

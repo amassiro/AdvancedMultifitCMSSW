@@ -24,9 +24,13 @@ Example
     
     
     Check high eta and MET PD
-    xrdcp root://cms-xrd-global.cern.ch//store/data/Run2017F/MET/RAW-RECO/HighMET-PromptReco-v1/000/305/035/00000/3EF5D4CA-D2B1-E711-A7F2-02163E01A4BB.root /tmp/amassiro/
+    xrdcp root://cms-xrd-global.cern.ch//store/data/Run2017F/MET/RAW-RECO/HighMET-PromptReco-v1/000/305/040/00000/5E03A8E9-1BB2-E711-841D-02163E0144CC.root  /tmp/amassiro/
     
-    cmsRun runRecoAndDump.py   inputFiles=file:/tmp/amassiro/3EF5D4CA-D2B1-E711-A7F2-02163E01A4BB.root 
+    cmsRun runRecoPATAndDump.py   inputFiles=file:/tmp/amassiro/5E03A8E9-1BB2-E711-841D-02163E0144CC.root
+    r00t -q FilterTree.cxx\(\"output.root\",\"outputFilter.root\"\)
+    r00t plotPulse.cxx\(\"outputFilter.root\",1\)  
+    r00t plotPulse.cxx\(\"outputFilter.root\",-1,872439603\)
+    
     
     
     
