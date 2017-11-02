@@ -30,6 +30,8 @@ Example
     r00t -q FilterTree.cxx\(\"output.root\",\"outputFilter.root\"\)
     r00t plotPulse.cxx\(\"outputFilter.root\",1\)  
     r00t plotPulse.cxx\(\"outputFilter.root\",-1,872439603\)
+    r00t plotPulse.cxx\(\"outputFilter.root\",-1,872439603,0\)
+    r00t plotPulse.cxx\(\"output.root\",-1,872439603,6\)
     
     
     
