@@ -67,8 +67,7 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 #process.GlobalTag.globaltag = '80X_dataRun2_2016SeptRepro_v4'   ---> working for 2016
 
 # for 2017 data
-process.GlobalTag.globaltag = '92X_dataRun2_Prompt_v4'
-
+process.GlobalTag.globaltag = '92X_dataRun2_Prompt_v11'
 
 
 
